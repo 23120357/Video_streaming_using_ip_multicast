@@ -323,7 +323,7 @@ class MulticastClient:
 if __name__ == "__main__":
     root = Tk()
     # Fixed geometry to prevent resizing issues
-    root.geometry("680x480")
+    root.geometry("680x520")
     root.resizable(False, False)
     
     app = MulticastClient(root)

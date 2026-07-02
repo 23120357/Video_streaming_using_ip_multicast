@@ -7,7 +7,7 @@ from CustomPacket import CustomPacket
 
 MULTICAST_ADDR = "239.1.1.1"
 MULTICAST_PORT = 5004
-MAX_PAYLOAD_SIZE = 1400  # Leave headroom below MTU of 1500
+MAX_PAYLOAD_SIZE = 1400
 
 class MulticastServer:
     def __init__(self, filename):
@@ -18,7 +18,6 @@ class MulticastServer:
             sys.exit(1)
         
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
-        # Set the Time-to-Live for multicast to 1 to restrict it to local subnet
         self.sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 1)
         self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         
@@ -86,7 +85,7 @@ class MulticastServer:
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("[Usage: python Server.py <file_MJPEG>]\n")
+        print("[Usage: python Server.py <file>.Mjpeg]\n")
         sys.exit(1)
         
     filename = sys.argv[1]
